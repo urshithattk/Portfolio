@@ -3,459 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Urshitha-portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Welcome</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeFloat 2s ease-out forwards;
+    }
+
+    .logo-wrapper img {
+      width: 140px;
+      height: auto;
+      opacity: 0;
+      animation: fadeInImage 1.6s ease-out 0.5s forwards;
+      transform: translateY(20px);
+    }
+
+    .logo-text {
+      margin-top: 14px;
+      font-size: 1.2rem;
+      color: #e0e0e0;
+      letter-spacing: 1px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: textRise 1.4s ease-out 1.2s forwards;
+    }
+
+    @keyframes fadeFloat {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeInImage {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes textRise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Optional zoom background animation */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 130%;
+      height: 130%;
+      background: radial-gradient(circle at center, #00adb5 5%, transparent 70%);
+      opacity: 0.04;
+      animation: zoomBg 3.5s ease-in-out forwards;
+    }
+
+    @keyframes zoomBg {
+      0% {
+        transform: scale(1.2);
+        opacity: 0.05;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0.02;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- 🛟 Help Desk Chatbot -->
-<div class="chatbot-toggle" onclick="toggleChatbot()">
-  <img src="./icons/bot.png" alt="Chatbot Icon" class="chatbot-icon" />
-</div>
-
-<div class="chatbot-container" id="chatbot">
-  <div class="chatbot-header">
-    <span>Portfolio Assistant</span>
-    <button onclick="toggleChatbot()">✖</button>
-  </div>
-  <div class="chatbot-body" id="chatbotBody">
-    <div class="bot-msg">Hi there! 👋<br>I’m Tessa, your personal portfolio assistant.</div>
-  </div>
-  <div class="chatbot-input">
-    <input type="text" id="userInput" placeholder="Ask something..." />
-    <button onclick="sendMessage()">➤</button>
-  </div>
-</div>
-
-
-
-  <!-- Mail sent Msg pop-up -->
-  <div id="toast" class="toast-message">✅ Thank you! Your message has been sent 🎉</div>
-  <!-- Back to the top btn -->
-<button id="backToTop" title="Back to top">
-  <img src="./icons/top-arrow.png" alt="Top" />
-</button>
-<!-- 🌐 NAVIGATION BAR -->
-<header class="navbar">
-  <nav class="nav-glass">
-    <div class="logo">Portfolio</div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-  <!-- AOS CSS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-</header>
-
-<!-- 🌐 Landing Section -->
-<section id="home" class="home-section">
-
-<!-- 🌐 Social Media Column -->
-<div class="social-column">
-  <a href="mailto:urshithasaittk@gmail.com" target="_blank" title="Email">
-    <img src="./icons/gmail.png" alt="Email">
-  </a>
-  <a href="https://instagram.com/i_uru_27" target="_blank" title="Instagram">
-    <img src="./icons/instagram.png" alt="Instagram">
-  </a>
-  <a href="https://www.linkedin.com/in/urshitha-sai-t-t-k-011b02247/" target="_blank" title="LinkedIn">
-    <img src="./icons/linkedin.png" alt="LinkedIn">
-  </a>
-  <a href="https://github.com/urshithattk" target="_blank" title="GitHub">
-    <img src="./icons/github.png" alt="GitHub">
-  </a>
-  <a href="https://twitter.com/yourusername" target="_blank" title="Twitter">
-    <img src="./icons/twitter.png" alt="Twitter">
-  </a>
-</div>
-
-
-  <!-- Main Content -->
-  <div class="home-content">
-
-    <!-- Left Text Side -->
-    <div class="intro-text">
-      <h1 style="font-size: 2.5rem;">Hi, I'm TTK Urshitha Sai!</h1>
-      <div class="roller-container">
-        <span class="static-text">I'm a </span>
-        <div class="roller">
-          <span>Web Developer</span>
-          <span>Full Stack Developer</span>
-          <span>AI/ML Enthusiast</span>
-        </div>
-      </div>
-      <p class="intro-para">
-        I'm a passionate tech enthusiast blending frontend creativity and backend logic to build seamless digital experiences.
-        With experience developing medical, enterprise, and multilingual AI tools, I specialize in scalable full-stack solutions
-        and intelligent systems. I thrive in collaborative environments, always eager to turn innovative ideas into real-world impact.
-      </p>
-    </div>
-
-    <!-- Right Image Side -->
-    <div class="image-side">
-      <div class="image-wrapper">
-        <img src="./images/comical.png" alt="Urshitha" />
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  <!-- Paste inside <body> of your portfolio HTML -->
-
-<!-- 🧊 PROJECTS -->
-<section class="section" id="projects">
-  <h2 class="section-title">Projects</h2>
-
-  <div class="project-card from-left">
-    <div class="project-image"><img src="./images/project1.jpg" alt="Offline HR Chatbot"></div>
-    <div class="project-text">
-      <h3>Offline HR Chatbot using LLaMA</h3>
-      <p>Built a self-hosted AI chatbot using LLaMA 2 model with LangChain and Gradio. Enabled offline conversation with HR documents for private organizations. Used Python + Transformers.</p>
-      <a href="./pdfs/Npcil-report.pdf" class="know-more">Know more &gt;</a>
-    </div>
+  <div class="logo-wrapper">
+    <img src="./icons/logo.png" alt="Logo" />
+    <div class="logo-text">Crafted by Urshitha Sai</div>
   </div>
 
-  <div class="project-card from-right reverse">
-    <div class="project-image"><img src="./images/project2.png" alt="Contouring Web App"></div>
-    <div class="project-text">
-      <h3>Contouring Web App for BARC</h3>
-      <p>Developed frontend for an electron beam contouring application used in nuclear labs. Focused on UI design, responsiveness and backend integration.</p>
-      <a href="#" class="know-more">Know more &gt;</a>
-    </div>
-  </div>
-
-  <div class="project-card from-left">
-    <div class="project-image"><img src="./images/project3.png" alt="Internship Portal"></div>
-    <div class="project-text">
-      <h3>Internship Management Portal</h3>
-      <p>Created a PHP & MySQL-based portal to handle student internship requests, with file uploads, approvals and user role access.</p>
-      <a href="#" class="know-more">Know more &gt;</a>
-    </div>
-  </div>
-
-  <div class="project-card from-right reverse">
-    <div class="project-image"><img src="./images/project4.png" alt="Voxify Speech Translation"></div>
-    <div class="project-text">
-      <h3>Voxify: Speech-to-Speech Translator</h3>
-      <p>Developed a speech translation system using speech recognition, translation APIs and text-to-speech synthesis with an intuitive frontend.</p>
-      <a href="./pdfs/voxify.pdf" class="know-more">Know more &gt;</a>
-    </div>
-  </div>
-
-  <div class="project-card from-left">
-    <div class="project-image"><img src="./images/project5.jpg" alt="Spa & Salon Website"></div>
-    <div class="project-text">
-      <h3>High-Throughput Request Gateway with Circuit Breaker</h3>
-      <p>A lightweight, efficient API Gateway built using FastAPI that routes requests to backend microservices with round-robin load balancing and a built-in circuit breaker mechanism for fault tolerance.</p>
-      <a href="./pdfs/gateway.pdf" class="know-more">Know more &gt;</a>
-    </div>
-  </div>
-  
-<div class="project-card from-left">
-  <div class="project-image">
-    <img src="./images/chatgpt.png" alt="ChatGPT Clone Project">
-  </div>
-  <div class="project-text">
-    <h3>ChatGPT Clone with Voice & PDF Support</h3>
-    <p>
-      Built a smart ChatGPT-style assistant that supports voice-based queries and reads uploaded PDFs to answer contextually. 
-      Integrated Web Speech API for live transcription and used LLaMA 3.2-1B via Groq API for fast, accurate responses. 
-      Ideal for interactive learning, document Q&A, or personal productivity.
-    </p>
-    <a href="https://llama-chatbot-4fkr.onrender.com" class="know-more" target="_blank">Know more &gt;</a>
-  </div>
-</div>
-
-</section>
-
-<!-- 🛠 EXPERIENCE -->
-<section class="section" id="experience">
-  <h2 class="section-title">Experience</h2>
-
-  <div class="project-card from-left">
-    <div class="project-image" style="position: relative;">
-      <img src="./images/npcil.png" alt="NPCIL AI/ML Intern">
-      <div class="timeline">
-        <span class="dot top"></span>
-        <span class="line"></span>
-        <span class="dot bottom"></span>
-        <div class="dates">
-          <p>9/12/2024</p>
-          <p>31/03/25</p>
-        </div>
-      </div>
-    </div>
-    <div class="project-text">
-      <h3>AI/ML Intern</h3>
-      <p><strong>Company:</strong> Nuclear Power Corporation of India (NPCIL)</p>
-      <p><strong>Designation:</strong> AI/ML Intern</p>
-      <p><strong>Duration:</strong> Dec 2024 - Mar 2025 (4 months)</p>
-      <p><strong>Project:</strong> Developed an offline HR chatbot for secure, air-gapped environments using LLaMA 3.2-1B for fast CPU-based inference. Built a RAG pipeline with embedding caching and fine-tuned on 100+ HR documents to improve accuracy. Integrated the bot into a LAN-accessible web app.</p>
-      <p><strong>Certificate:</strong> <a class="know-more" href="./pdfs/NPCIL-completionLetter.pdf">View Certificate &gt;</a></p>
-    </div>
-  </div>
-
-  <div class="project-card from-right reverse">
-    <div class="project-image" style="position: relative;">
-      <img src="./images/barc.png" alt="BARC Web Dev">
-      <div class="timeline">
-        <span class="dot top"></span>
-        <span class="line"></span>
-        <span class="dot bottom"></span>
-        <div class="dates">
-          <p>05/24</p>
-          <p>07/24</p>
-        </div>
-      </div>
-    </div>
-    <div class="project-text">
-      <h3>Web Dev Intern</h3>
-      <p><strong>Company:</strong> Bhabha Atomic Research Centre (BARC)</p>
-      <p><strong>Designation:</strong> Frontend Intern</p>
-      <p><strong>Duration:</strong> May 2024 - July 2024 (2 months)</p>
-      <p><strong>Project:</strong> Designed and implemented frontend UI for e-beam contouring web application using HTML, CSS, JS.</p>
-      <p><strong>Certificate:</strong> <a class="know-more" href="./pdfs/barc_certificate.png">View Certificate &gt;</a></p>
-    </div>
-  </div>
-
-  <div class="project-card from-left">
-    <div class="project-image" style="position: relative;">
-      <img src="./images/pce.png" alt="Pillai Backend">
-      <div class="timeline">
-        <span class="dot top"></span>
-        <span class="line"></span>
-        <span class="dot bottom"></span>
-        <div class="dates">
-          <p>05/23</p>
-          <p>08/23</p>
-        </div>
-      </div>
-    </div>
-    <div class="project-text">
-      <h3>Backend Developer</h3>
-      <p><strong>Company:</strong> Pillai College of Engineering</p>
-      <p><strong>Designation:</strong> Backend Developer</p>
-      <p><strong>Duration:</strong> May 2023 - Aug 2023 (3 months)</p>
-      <p><strong>Project:</strong> Built backend APIs for student login & data sync in internship portal using Node.js and Express.</p>
-      <p><strong>Certificate:</strong> <a class="know-more" href="./pdfs/Urshitha-appriciation.pdf">View Certificate &gt;</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- 📜 CERTIFICATIONS -->
-
-<section class="section" id="certifications">
-  <h2 class="section-title">Certifications</h2>
-  <div class="card-grid">
-
-    <!-- Python Data Structures -->
-    <div class="card">
-      <div class="card-content">
-        <h3>Python Data Structures</h3>
-        <p>University of Michigan, Coursera</p>
-        <p><strong>Certificate:</strong> 
-          <a class="know-more" href="./pdfs/py_datastructures.pdf">View Certificate &gt;</a>
-        </p>
-        <p class="cert-para">
-          This course deepened my understanding of essential Python data structures like lists, dictionaries, tuples, and sets. I learned how to store, access, and manipulate structured data efficiently, and implemented real-world scenarios involving nested data, parsing, and string processing. The course helped me write optimized Python code and approach problems with clean data-oriented solutions.
-        </p>
-      </div>
-    </div>
-
-    <!-- Programming for Everybody -->
-    <div class="card">
-      <div class="card-content">
-        <h3>Programming for Everybody (Beginning with Python)</h3>
-        <p>University of Michigan, Coursera</p>
-        <p><strong>Certificate:</strong> 
-          <a class="know-more" href="./pdfs/Python_for_everybody.pdf">View Certificate &gt;</a>
-        </p>
-        <p class="cert-para">
-          This foundational course introduced me to programming through Python, covering topics like variables, expressions, conditionals, loops, and functions. It emphasized logical thinking and structured problem-solving, helping me gain the confidence to write functional programs from scratch. The hands-on assignments reinforced programming logic and helped me build a strong base for future software development.
-        </p>
-      </div>
-    </div>
-
-    <!-- Java for Beginners -->
-    <div class="card">
-      <div class="card-content">
-        <h3>Java for Beginners</h3>
-        <p>Udemy</p>
-        <p><strong>Certificate:</strong> 
-          <a class="know-more" href="./pdfs/java.pdf">View Certificate &gt;</a>
-        </p>
-        <p class="cert-para">
-          Through this Java course, I gained comprehensive knowledge of object-oriented programming principles including classes, objects, inheritance, polymorphism, and encapsulation. I also worked with exception handling, file input/output, and GUI basics using Java Swing. The course provided practical exposure through exercises and mini-projects, allowing me to implement real-world Java applications.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- 📄 RESUME -->
-<section class="section" id="resume">
-  <h2 class="section-title">Resume</h2>
-  <div class="resume-card">
-    <div class="card-content">
-      <h3>My Resume</h3>
-      <p>Preview or download the full PDF resume below:</p>
-      <iframe src="pdfs/Urshitha-Resume.pdf"></iframe>
-<a href="./pdfs/Urshitha-Resume.pdf" download class="download-btn">
-  Download Resume
-</a>
-    </div>
-  </div>
-
-  
-</section>
-
-<!-- 📬 CONTACT -->
-<section class="section" id="contact">
-  <h2 class="section-title">Contact Me</h2>
-      <div class="contact-text">
-      <p>Let's create something amazing together!</p>
-      <p>Whether it's a collaboration, opportunity, or a tech conversation — feel free to reach out. I usually respond within 24 hours.</p>
-    </div>
-  <div class="contact-container">
-    <form
-      action="https://formspree.io/f/mkgzvppv"
-      method="POST"
-      class="contact-form"
-    >
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="_replyto" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <!-- <div class="contact-text">
-      <p>Let's create something amazing together!</p>
-      <p>Whether it's a collaboration, opportunity, or a tech conversation — feel free to reach out. I usually respond within 24 hours.</p>
-    </div> -->
-  </div>
-</section>
-
-
-<!-- 🔚 FOOTER -->
-<footer class="footer">
-  <div class="footer-content">
-    <p>&copy; 2025 Urshitha Sai. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</footer>
-
-  <!-- 🎬 SCROLL OBSERVER -->
   <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.project-card, .card, .resume-card').forEach(el => observer.observe(el));
+    setTimeout(() => {
+      window.location.href = "main.html";
+    }, 3000);
   </script>
-<!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true,
-    easing: 'ease-in-out',
-  });
-</script>
-
-<script>
-  window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".nav-glass");
-    if (window.scrollY > 10) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
-
-
-  function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("show");
-  }
-
-  window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".nav-glass");
-    if (window.scrollY > 10) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
-</script>
-
-<!-- Back to top script -->
-<script>
-  const backToTopBtn = document.getElementById("backToTop");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      backToTopBtn.style.display = "flex";
-    } else {
-      backToTopBtn.style.display = "none";
-    }
-  });
-
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-</script>
-<!-- pop-up ack after email is sent -->
- <script>
-  const form = document.querySelector(".contact-form");
-  const toast = document.getElementById("toast");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent immediate redirect
-
-    const data = new FormData(form);
-    fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        form.reset(); // Clear form
-        toast.classList.add("show");
-
-        // Hide toast after 4 seconds
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 4000);
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
-    })
-    .catch(() => alert("Error sending message. Try again."));
-  });
-</script>
-
-<script src="script.js"></script>
 
 </body>
 </html>
